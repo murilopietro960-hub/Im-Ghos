@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scirpt grátis do Ghos</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f1117;
+color:white;
+}
+
+header{
+background:#111827;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+color:#00b7ff;
+}
+
+nav{
+background:#1f2937;
+padding:15px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.search-box{
+text-align:center;
+padding:20px;
+}
+
+.search-box input{
+width:80%;
+max-width:500px;
+padding:12px;
+border:none;
+border-radius:8px;
+}
+
+.stats{
+text-align:center;
+padding:10px;
+color:#aaa;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+.category{
+margin-bottom:40px;
+}
+
+.category h2{
+margin-bottom:15px;
+color:#00b7ff;
+}
+
+.card{
+background:#1f2937;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+pre{
+background:#111827;
+padding:10px;
+overflow:auto;
+border-radius:5px;
+margin-top:10px;
+}
+
+footer{
+background:#111827;
+padding:20px;
+text-align:center;
+margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Roblox Studio Hub</h1>
+<p>Scripts e recursos para desenvolvedores</p>
+</header>
+
+<nav>
+<a href="#gui">GUI</a>
+<a href="#player">Player</a>
+<a href="#tools">Ferramentas</a>
+<a href="#extras">Extras</a>
+</nav>
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Pesquisar script...">
+</div>
+
+<div class="stats">
+Visitas: <span id="counter">0</span>
+</div>
+
+<div class="container">
+
+<div class="category" id="gui">
+<h2>Interface (GUI)</h2>
+
+<div class="card script">
+<h3>Mensagem na Tela</h3>
+<pre>
+print("Bem-vindo ao jogo!")
+</pre>
+</div>
+
+</div>
+
+<div class="category" id="player">
+<h2>Player</h2>
+
+<div class="card script">
+<h3>Alterar Velocidade</h3>
+<pre>
+game.Players.PlayerAdded:Connect(function(player)
+player.CharacterAdded:Connect(function(char)
+char:WaitForChild("Humanoid").WalkSpeed = 20
+end)
+end)
+</pre>
+</div>
+
+<div class="card script">
+<h3>Pulo Alto</h3>
+<pre>
+game.Players.PlayerAdded:Connect(function(player)
+player.CharacterAdded:Connect(function(char)
+char:WaitForChild("Humanoid").JumpPower = 100
+end)
+end)
+</pre>
+</div>
+
+</div>
+
+<div class="category" id="tools">
+<h2>Ferramentas</h2>
+
+<div class="card script">
+<h3>Dar Ferramenta</h3>
+<pre>
+local tool = game.ServerStorage.Sword:Clone()
+tool.Parent = player.Backpack
+</pre>
+</div>
+
+</div>
+
+<div class="category" id="extras">
+<h2>Extras</h2>
+
+<div class="card script">
+<h3>Sistema de Moedas</h3>
+<pre>
+local leaderstats = Instance.new("Folder")
+leaderstats.Name = "leaderstats"
+leaderstats.Parent = player
+</pre>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Roblox Studio Hub © 2026
+</footer>
+
+<script>
+let visits = localStorage.getItem("visits") || 0;
+visits++;
+localStorage.setItem("visits", visits);
+document.getElementById("counter").textContent = visits;
+
+document.getElementById("search").addEventListener("keyup", function(){
+let value = this.value.toLowerCase();
+let scripts = document.querySelectorAll(".script");
+
+scripts.forEach(script=>{
+let text = script.innerText.toLowerCase();
+script.style.display = text.includes(value) ? "block" : "none";
+});
+});
+</script>
+
+</body>
+  </html>
